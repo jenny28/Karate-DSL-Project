@@ -1,4 +1,4 @@
-package examples.dummyjson.users;
+package examples.dummyjson.users.users;
 
 import com.intuit.karate.junit5.Karate;
 
