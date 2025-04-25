@@ -14,6 +14,7 @@ Feature: Products
     When method GET
     Then status 200
     * assert responseTime <1000
+    * assert response.id == 2
 
   Scenario:Delete product
     Given path "products",2
