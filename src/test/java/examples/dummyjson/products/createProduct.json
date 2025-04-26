@@ -1,8 +1,9 @@
 {
+  "id": 100,
   "title": "BlassAcademy",
+  "price": 9.99,
+  "rating": 5.0,
+  "stock": 25,
   "description": "emilyspass",
-  "category": "curso editados",
-  "price": 10.99,
-  "rating": 5.5,
-  "stock": 24
+  "category": "curso editados"
 }

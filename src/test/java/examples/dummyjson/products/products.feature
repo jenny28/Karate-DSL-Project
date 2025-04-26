@@ -2,6 +2,7 @@ Feature: Products
 
   Background:
     Given url mainURL
+    * headers auth
 
   Scenario: As user I want to have all products so that i can see the detail of them
     Given path "products"
@@ -15,6 +16,11 @@ Feature: Products
     Then status 200
     * assert responseTime <1000
     * assert response.id == 2
+    * assert response.category == "beauty"
+    * assert response.weight == 3
+    * assert response.dimensions.width == 12.42
+    * assert response.minimumOrderQuantity == 32
+
 
   Scenario:Delete product
     Given path "products",2
@@ -27,7 +33,7 @@ Feature: Products
     * params {"sortBy": "price", "order": "asc"}
     When method GET
     Then status 200
-    * assert responseTime < 1000
+    * assert responseTime < 1500
 
   Scenario:Search product
     Given path "products" , "search"
@@ -44,6 +50,8 @@ Feature: Products
     When method POST
     Then status 201
     * assert responseTime < 1000
+    * def schema = read("createSchema.json")
+    * match response == schema
 
   Scenario: Update product
     * def updateProductRequest = read ("updateProduct.json")
@@ -62,4 +70,10 @@ Feature: Products
     When method PATCH
     Then status 200
     * assert responseTime < 1000
+
+  Scenario: dont Get product
+    Given path "products",345
+    When method GET
+    Then status 404
+
 

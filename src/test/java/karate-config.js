@@ -7,7 +7,7 @@ function fn() {
     var config = {
         env: env,
         myVarName: 'someValue',
-        mainURL:"https://dummyjson.com"
+        mainURL:"https://dummyjson.com/auth"
     }
     if (env == 'dev') {
         // customize
@@ -15,5 +15,7 @@ function fn() {
     } else if (env == 'e2e') {
         // customize
     }
+    const result = karate.callSingle('classpath:examples/dummyjson/login.feature')
+    config.auth = {"Authorization": `Bearer ${result.token}`}
     return config;
 }

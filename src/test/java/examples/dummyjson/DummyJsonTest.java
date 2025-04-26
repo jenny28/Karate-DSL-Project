@@ -10,7 +10,7 @@ class DummyJsonTest {
 
     @Test
     void testParallel() {
-        Results results = Runner.path("classpath:dummyjson")
+        Results results = Runner.path("classpath:examples/dummyjson")
                 //.outputCucumberJson(true)
                 .parallel(5);
         assertEquals(0, results.getFailCount(), results.getErrorMessages());
